@@ -3,9 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var passport = require('passport');
 var methodOverride = require('method-override');
 
 require('dotenv').config();
+require('./config/database');
+require('./config/passport');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -21,6 +26,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+
+// part of the login
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Add this middleware BELOW passport middleware
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next(); // dont forget to call next when its needed or else it'll stay trapped here when it gets to this point and nothing will render/redirect. next is like the open door for the flow to continue going where it needs
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
