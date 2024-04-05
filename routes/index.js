@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
+const User = require('../models/user');
 
 
 router.get('/', function(req, res, next) {
   res.render('index', {title:'Petpawrazzi'})
 });
 
-router.get('/home', function(req,res,next){
+router.get('/home',ensureLoggedIn, async function(req,res,next){
   res.render('home')
 })
 
