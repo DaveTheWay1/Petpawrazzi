@@ -6,6 +6,8 @@ const petSchema = new Schema({
     name:{type:String},
     age:{type:Number},
     gender:{type:String},
+    breed:{type:String},
+    animal:{type:String},
     birthday: Date
 }, {timestamps: true})
 
