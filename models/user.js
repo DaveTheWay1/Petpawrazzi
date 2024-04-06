@@ -8,7 +8,8 @@ const userSchema = new Schema({
     required: true
     },
     email: String,
-    avatar: String
+    avatar: String,
+    pets:[{type:Schema.Types.ObjectId, ref: 'Pet'}]
 }, {
     timestamps: true
 });
