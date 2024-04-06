@@ -12,3 +12,10 @@ img[alt="google"]{
   position: relative;
   top:7px;
 }
+
+img[alt="avatar"]{
+  position: relative;
+  top: 10px;
+  width: 40px;
+  border-radius: 50px;
+}
