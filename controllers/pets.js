@@ -12,7 +12,11 @@ async function addPet(req,res){
 
 async function create(req,res){
     const pet = await Pet.create(req.body);
+    const user = await User.findById(pet.owner);
+    user.pets.push(pet)
     await pet.save();
+    await user.save();
+    console.log(user);
     res.redirect(`/pets/${pet.id}`)
 }
 
