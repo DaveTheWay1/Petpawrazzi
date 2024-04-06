@@ -1,2 +1,34 @@
 <%- include('../partials/header') %>
-<h1>Add Pets</h1>
+<h1>Tell Us About Your Pet!</h1>
+<form action="/pets/<%=user.id%>" method="POST">
+    <input type="hidden" name="owner" value="<%=user.id%>">
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <label>Animal:</label>
+        <input type="text" name="animal">
+    </div>
+    <div>
+        <label>Breed:</label>
+        <input type="text" name="breed">
+    </div>
+    <div>
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="null">Select...</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number">
+    </div>
+    <div>
+        <label>Birthday:</label>
+        <input type="date" name="birthday">
+    </div>
+    <input type="submit">
+</form>
