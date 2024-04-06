@@ -4,13 +4,14 @@
         <p><%= user.name%></p>
         <img src="<%=user.avatar%>" alt="avatar">
         <select name="pets">
-            <option value="pet1"><a href="">Add Pets</a></option>
-            <option value="pet2"><a href="">Add Pets</a></option>
+            <option value="pet1"><a href="">Pets</a></option>
+            <option value="pet2"><a href="">Pets</a></option>
         </select>
         <a href="/pets/new">Add Pets</a>
         <a href="/logout">LOG OUT</a>
         <a href="/users/<%=user.id%>">Profile</a>
+    <% } else { %>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="google"></a>
     <% } %>
-    <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="google"></a>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </nav>
