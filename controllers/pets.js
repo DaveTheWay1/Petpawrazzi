@@ -3,7 +3,8 @@ const User = require('../models/user')
 
 module.exports = {
     new:addPet,
-    create
+    create,
+    show
 }
 async function addPet(req,res){
     res.render('pets/new')
@@ -11,9 +12,12 @@ async function addPet(req,res){
 
 async function create(req,res){
     const pet = await Pet.create(req.body);
-    const pets = await Pet.find({})
-    const user = await User.findById(pet.owner)
     await pet.save();
-    console.log(user.name)
-    res.render('pets/new')
+    res.redirect(`/pets/${pet.id}`)
+}
+
+async function show(req, res){
+    const pet = await Pet.findById(req.params.id);
+    const user = await User.findById(pet.owner)
+    res.render('pets/show', {pet, user});
 }
