@@ -3,10 +3,14 @@
     <% if (user) { %>
         <p><%= user.name%></p>
         <img src="<%=user.avatar%>" alt="avatar">
-        <select name="pets">
-            <option value="pet1"><a href="">Pets</a></option>
-            <option value="pet2"><a href="">Pets</a></option>
-        </select>
+        <% if (user.pets.length) { %>
+            <% user.pets.forEach(function(pet){ %>
+                <%console.log(pet)%>
+                <a href="/pets/<%=pet%>">pet</a>
+            <% })%>
+        <% } else { %>
+            <p>No Pets found</p>
+        <% } %>
         <a href="/pets/new">Add Pets</a>
         <a href="/logout">LOG OUT</a>
         <a href="/users/<%=user.id%>">Profile</a>
