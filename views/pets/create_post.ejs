@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<h1>Create A Post For <%=pet.name%>!</h1>
+<form action="/posts/create" method="POST">
+    <input type="hidden" name="petName" value="<%=pet.id%>">
+    <input type="hidden" name="author" value="<%=pet.owner.id%>">
+    <div>
+        <label>Photo:</label>
+        <input type="text" name="img">
+    </div>
+    <div>
+        <label>Caption:</label>
+        <input type="text" name="caption">
+    </div>
+    <input type="submit">
+</form>
