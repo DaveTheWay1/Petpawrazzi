@@ -8,6 +8,7 @@ const petSchema = new Schema({
     gender:{type:String},
     breed:{type:String},
     animal:{type:String},
+    posts:[{type:Schema.Types.ObjectId, ref:'Post'}],
     birthday: Date
 }, {timestamps: true})
 
