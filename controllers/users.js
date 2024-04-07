@@ -10,6 +10,7 @@ function index(req,res){
 }
 
 async function show(req,res){
-    const user = await User.findById(req.params.id) 
+    const user = await User.findById(req.params.id).populate('pets')
+    console.log(user)
     res.render('users/profile', {user})
 }
