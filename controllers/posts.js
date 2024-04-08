@@ -3,7 +3,8 @@ const Pet = require('../models/pet');
 module.exports = {
     new:addPost,
     create,
-    show
+    show,
+    delete:deletePost
 }
 async function addPost(req,res){
     const pet = await Pet.findById(req.params.id).populate('owner')
@@ -24,4 +25,11 @@ async function show(req, res){
     const post = await Post.findById(req.params.id).populate(['petName', 'author']);
     console.log(post);
     res.render('pets/post', {post})
+}
+
+async function deletePost(req,res){
+    const posts = Post.find({})
+    const deletedPost = await Post.findByIdAndDelete(req.params.id).populate('petName');
+    console.log(posts)
+    res.redirect(`/pets/${deletedPost.petName.id}`)
 }
