@@ -1,2 +1,8 @@
 <%-include('../partials/header') %>
-<h1>Posts</h1>
+<%console.log(post)%>
+<a href="<%=post.img%>"><%= post.img %></a>
+<p>Caption: <%=post.caption%></p>
+<p>Name: <%=post.petName.name%></p>
+<p>Posted By: <%=post.author.name%></p>
+<p>Likes: <%= post.likes %> </p>
+<p>Posted At: <%=post.createdAt%></p>
