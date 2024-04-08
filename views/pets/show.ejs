@@ -5,3 +5,12 @@
 <p>Birthday: <%= pet.birthday %></p>
 <p><%= pet.animal %> Breed: <%= pet.breed %></p>
 <p>Owner:<%= user.name %></p>
+
+<% pet.posts.forEach(function(post){ %>
+    <%console.log(`post:${post.img}`)%>
+    <a href="<%=post.img%>"><%= post.img %></a>
+    <p>Caption: <%=post.caption%></p>
+    <p>Pet Name: <a href="/pets/<%=pet.id%>"><%=pet.name%></a></p>
+    <p>Posted By: <a href="/<%=pet.owner.id%>"><%=pet.owner.name%></a></p>
+    <a href="/post/<%=post.id%>">View post</a>
+<% }) %>
