@@ -13,4 +13,12 @@
     <p>Pet Name: <a href="/pets/<%=pet.id%>"><%=pet.name%></a></p>
     <p>Posted By: <a href="/<%=pet.owner.id%>"><%=pet.owner.name%></a></p>
     <a href="/post/<%=post.id%>">View post</a>
+    <%if (user?._id.equals(pet.owner.id)){ %>
+        <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE">
+        </form>
+        <%console.log("id's are equal")%>
+    <% } else { %>
+        <% console.log(`user:${user.id} creator:${pet.owner.id}`)%>
+    <% } %>
 <% }) %>
