@@ -4,7 +4,9 @@ module.exports = {
     new:addPost,
     create,
     show,
-    delete:deletePost
+    delete:deletePost,
+    edit,
+    update
 }
 async function addPost(req,res){
     const pet = await Pet.findById(req.params.id).populate('owner')
@@ -32,4 +34,18 @@ async function deletePost(req,res){
     const deletedPost = await Post.findByIdAndDelete(req.params.id).populate('petName');
     console.log(posts)
     res.redirect(`/pets/${deletedPost.petName.id}`)
+}
+
+async function edit(req,res){
+    const post = await Post.findById(req.params.id).populate(['petName', 'author']);
+    res.render('pets/edit', {post})
+}
+
+async function update(req,res){
+    const _id = req.params.id;
+    const body = req.body
+    const post = await Post.findByIdAndUpdate(_id, body,{new:true});
+    console.log(post);
+    await post.save();
+    res.redirect(`/post/${post.id}`)
 }
