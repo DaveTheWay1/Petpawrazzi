@@ -5,7 +5,7 @@ const postSchema = new Schema({
     img:{type:String},
     caption:{type:String},
     petName:{type:Schema.Types.ObjectId, ref: 'Pet'},
-    author:{type:Schema.Types.ObjectId, ref: 'Pet'},
+    author:{type:Schema.Types.ObjectId, ref: 'User'},
     likes:{type:Number, default:0}
 }, {timestamps:true});
 
