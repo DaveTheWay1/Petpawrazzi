@@ -6,5 +6,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 router.post('/posts/create',ensureLoggedIn ,postsCtrl.create);
 router.get('/pets/:id/posts/new', ensureLoggedIn, postsCtrl.new);
 router.get('/post/:id', ensureLoggedIn, postsCtrl.show)
+router.delete('/post/:id', ensureLoggedIn, postsCtrl.delete)
+router.get('/post/:id/edit', postsCtrl.edit);
 
 module.exports = router;
