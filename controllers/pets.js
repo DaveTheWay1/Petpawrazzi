@@ -1,5 +1,5 @@
 const Pet = require('../models/pet');
-const User = require('../models/user')
+const User = require('../models/user');
 
 module.exports = {
     new:addPet,
@@ -16,12 +16,12 @@ async function create(req,res){
     user.pets.push(pet)
     await pet.save();
     await user.save();
-    console.log(user);
     res.redirect(`/pets/${pet.id}`)
 }
 
 async function show(req, res){
-    const pet = await Pet.findById(req.params.id);
-    const user = await User.findById(pet.owner)
+    const pet = await Pet.findById(req.params.id).populate(['owner', 'posts']);
+    const user = await User.findById(pet.owner);
+    console.log(pet);
     res.render('pets/show', {pet, user});
 }
