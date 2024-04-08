@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+<h1>Edit Post For <%=post.petName.name%>!</h1>
+<form action="/post/<%=post.id%>?_method=PUT" method="POST">
+    <div>
+        <label>Photo:</label>
+        <input type="text" name="img" value="<%=post.img%>">
+    </div>
+    <div>
+        <label>Caption:</label>
+        <input type="text" name="caption" value="<%=post.caption%>">
+    </div>
+    <input type="submit">
+</form>
