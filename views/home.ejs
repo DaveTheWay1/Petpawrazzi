@@ -3,12 +3,51 @@
 
 <% if(allPosts.length){ %>
     <% allPosts.forEach(function(post){ %>
-        <h3><%=post.petName.name%></h3>
-        <a href="<%=post.img%>"><%=post.img%></a>
-        <p><%=post.caption%></p>
-        <p><%=post.author.name%></p>
-        <p><%=post.likes%></p>
-        <p><%=post.createdAt%></p>
+    <table>
+        <tr>
+            <td><h3><%=post.petName.name%></h3></td>
+        </tr>
+        <tr>
+            <td><a href="<%=post.img%>"><%=post.img%></a></td>
+        </tr>
+        <tr>
+            <td>Caption: <%=post.caption%></td>
+        </tr>
+        <tr>
+            <td>Posted By: <%=post.author.name%></td>
+        </tr>
+        <tr>
+            <td>Likes: <%=post.likes%></td>
+        </tr>
+        <tr>
+            <td>Date: <%=post.createdAt%></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Comments..</p>
+                <%if(post.comments.length){%>
+                    <ul>
+                        <%post.comments.forEach(function(comment){ %>
+                            <li><%=comment.content%></li>
+                            <% if(user?._id.equals(comment.author)){ %>
+                                <form action="">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            <% } %>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <%console.log('no comments')%>
+                <% } %>
+                <form action="posts/<%=post.id%>/comments" method="POST">
+                    <input type="hidden" name="post" value="<%=post.id%>">
+                    <input type="hidden" name="author" value="<%=post.author.id%>">
+                    <textarea name="content" cols="65" rows="10" placeholder="Add a comment"></textarea>
+                    <input type="submit" value="⬆">
+                </form>
+            </td>
+        </tr>
+    </table>
     <% }) %>
 <% } else {%>
     <p>No posts yet</p>
