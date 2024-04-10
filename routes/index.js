@@ -11,7 +11,7 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/home',ensureLoggedIn, async function(req,res,next){
-  const allPosts = await Post.find({}).populate(['petName', 'author']);
+  const allPosts = await Post.find({}).populate(['petName', 'author', 'comments']);
   console.log(allPosts)
   res.render('home', {allPosts})
 })
