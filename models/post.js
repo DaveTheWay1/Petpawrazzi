@@ -6,6 +6,7 @@ const postSchema = new Schema({
     caption:{type:String},
     petName:{type:Schema.Types.ObjectId, ref: 'Pet'},
     author:{type:Schema.Types.ObjectId, ref: 'User'},
+    comments:[{type:Schema.Types.ObjectId, ref: 'Comments'}],
     likes:{type:Number, default:0}
 }, {timestamps:true});
 
