@@ -1,16 +1,17 @@
 const User = require('../models/user')
 
+
+
 module.exports = {
     index,
     show
 }
 
-function index(req,res){
+async function index(req,res){
     res.render('home', {title:Petpawrazzi})
 }
 
 async function show(req,res){
-    const user = await User.findById(req.params.id).populate('pets')
-    console.log(user)
-    res.render('users/profile', {user})
+    const user = await User.findById(req.params.id).populate({path:'pets', populate:{path:'posts'}});
+    res.render('users/profile', {user});
 }
