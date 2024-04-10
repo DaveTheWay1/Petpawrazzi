@@ -2,15 +2,18 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
-const User = require('../models/user');
+// const User = require('../models/user');
+const Post = require('../models/post');
 
 
-router.get('/', function(req, res, next) {
-  res.render('index', {title:'Petpawrazzi'})
+router.get('/', async function(req, res, next) {
+  res.render('index', {title:'Petpawrazzi',})
 });
 
 router.get('/home',ensureLoggedIn, async function(req,res,next){
-  res.render('home')
+  const allPosts = await Post.find({}).populate(['petName', 'author']);
+  console.log(allPosts)
+  res.render('home', {allPosts})
 })
 
 // Google OAuth login route
