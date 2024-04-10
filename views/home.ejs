@@ -1,2 +1,15 @@
 <%- include('./partials/header') %>
-<h1>Welcome To Petpawrazzi</h1>
+<h1>Welcome To Petpawrazzi HOME PAGE</h1>
+
+<% if(allPosts.length){ %>
+    <% allPosts.forEach(function(post){ %>
+        <h3><%=post.petName.name%></h3>
+        <a href="<%=post.img%>"><%=post.img%></a>
+        <p><%=post.caption%></p>
+        <p><%=post.author.name%></p>
+        <p><%=post.likes%></p>
+        <p><%=post.createdAt%></p>
+    <% }) %>
+<% } else {%>
+    <p>No posts yet</p>
+<%}%>
