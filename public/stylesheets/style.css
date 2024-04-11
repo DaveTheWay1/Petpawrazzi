@@ -14,8 +14,268 @@ img[alt="google"]{
 }
 
 img[alt="avatar"]{
-  position: relative;
-  top: 10px;
   width: 40px;
   border-radius: 50px;
+}
+
+table{
+  border: solid black 1px;
+}
+
+#index-body{
+  background-color: palevioletred;
+}
+#welcome-container{
+  text-align: center;
+  border: solid white 5px;
+  position: relative;
+  top: 250px;
+  background-color: #FFA6C9;
+  padding-bottom: 25px;
+  display: block;
+  margin: 0 auto;
+  width: 700px;
+}
+
+#login{
+  position: relative;
+  top: 7px;
+  padding: 5px;
+  border: solid white 3px;
+  background-color: hotpink;
+  color: white;
+  text-decoration: none;
+}
+
+img[alt="pets"]{
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 245px;
+  /* border: solid black 1px; */
+}
+
+#header-links{
+  /* border: solid black 5px; */
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
+#user-name{
+  border: solid black 1px;
+  position: relative;
+  bottom: 19px;
+  font-weight: 600;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#home-header, #header-new{
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+  /* border: solid black 1px; */
+  width: 600px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#home-table{
+  display: block;
+  border: solid white 5px;
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  background-color: rgb(90, 200, 200); /* Teal color */
+  /* filter: brightness(120%);  */
+  width: 800px;
+  padding-left: 100px;
+}
+
+.label{
+  /* border: solid black 1px; */
+  /* font-weight:600; */
+  font-style:oblique;
+  font-weight: 600;
+}
+
+img[alt="pet-pic"]{
+  width: 400px;
+  position: relative;
+  left: 80px;
+  border: solid white 10px;
+}
+
+#home-body, #pro-body, #new-body, #showPet-body{
+  background-color: teal;
+}
+tr{
+  padding: 5px;
+}
+#petName-home, #petName-pro{
+  text-align: center;
+}
+
+#imgLink-home{
+  text-align: center;
+  font-size: xx-large;
+  /* border: solid black 1px; */
+}
+
+#imgLink-home > a{
+  background-color: aliceblue;
+  font-family:'Courier New', Courier, monospace;
+  border-radius: 10px;
+  padding: 3px;
+  font-weight: 700;
+  position: relative;
+  bottom: 10px;
+}
+
+.link{
+  border: solid black 1px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  height: 15px;
+  font-weight: 700;
+}
+
+#comments{
+  text-decoration:underline;
+}
+
+#com-btn{
+  border-radius: 50%;
+  position: relative;
+  bottom:15px;
+  right:40px;
+  color: blue;
+  background-color: white;
+}
+
+#pro-header{
+  text-align: center;
+}
+
+li{
+  list-style: none;
+}
+
+#pets{
+  text-align: center;
+  display: block;
+  margin:0 auto;
+  width: 700px;
+  border: solid white 5px;
+  margin-bottom: 15px;
+}
+
+#pro-table{
+  display: block;
+  border: solid white 5px;
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  background-color: rgb(90, 200, 200); /* Teal color */
+  filter: brightness(120%);
+  width: 800px;
+  padding-left: 100px;
+}
+
+#petPic-pro{
+  width: 400px;
+  position: relative;
+  right:525px;
+  /* right:1000px; */
+  /* border: solid white 10px; */
+}
+
+#com-btn-pro{
+  border-radius: 50%;
+  position: relative;
+  bottom:40px;
+  left:460px;
+  color: blue;
+  background-color: white;
+}
+
+#add-pet{
+  position: relative;
+  top: 25px;
+  border: solid white 45px;
+  background-color: rgb(90, 200, 200); ;
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.new-label{
+  position: relative;
+  top: 15px;
+  /* border: solid black 5px; */
+  font-weight: bold;
+  display: block;
+  /* margin: 0 auto; */
+  width: 45px;
+}
+
+.new-select{
+  /* border: solid black 10px; */
+  /* height: 15px; */
+  width: 147px;
+  height: 23px;
+}
+
+#patient-cat{
+  position: relative;
+  left: 55px;
+  bottom: 300px;
+  float: right;
+  /* border: solid black 1px; */
+  width: 300px;
+}
+
+#btn-new{
+  margin-top: 10px;
+  position: relative;
+  left: 320px;
+}
+
+#img-new-pets{
+  /* border: solid black 1px; */
+  display: block;
+  position: relative;
+  left: 320px;
+}
+#pet-post{
+  border: solid black 1px;
+}
+
+#create-link{
+  border: solid black 1px;
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  font-weight: 700;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+#pet-info{
+  border: solid black 1px;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  margin-top:15px;
+  background-color: rgb(90, 200, 200); 
+  border: solid white 5px;
 }

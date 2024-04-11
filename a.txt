@@ -1,0 +1,6 @@
+<% user.pets.forEach(function(pet){ %>
+    <% pet.posts.forEach(function(post){ %>
+        <h3><%= pet.name %></h3>
+        <a href="<%=post.img%>">Vew <%=pet.name%> IMG</a>
+    <% }) %>
+<% }) %>

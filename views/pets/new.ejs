@@ -1,34 +1,38 @@
 <%- include('../partials/header') %>
-<h1>Tell Us About Your Pet!</h1>
-<form action="/pets/<%=user.id%>" method="POST">
-    <input type="hidden" name="owner" value="<%=user.id%>">
-    <div>
-        <label>Name:</label>
-        <input type="text" name="name">
-    </div>
-    <div>
-        <label>Animal:</label>
-        <input type="text" name="animal">
-    </div>
-    <div>
-        <label>Breed:</label>
-        <input type="text" name="breed">
-    </div>
-    <div>
-        <label>Gender:</label>
-        <select name="gender">
-            <option value="null">Select...</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
-    </div>
-    <div>
-        <label for="age">Age:</label>
-        <input type="number" name="age">
-    </div>
-    <div>
-        <label>Birthday:</label>
-        <input type="date" name="birthday">
-    </div>
-    <input type="submit">
-</form>
+<body id="new-body">
+    <h1 id="header-new">Tell Us About Your Pet!</h1>
+    <form id="add-pet" action="/pets/<%=user.id%>" method="POST">
+        <input type="hidden" name="owner" value="<%=user.id%>">
+        <div>
+            <label class="new-label" >Name:</label><br>
+            <input class="new-input" type="text" name="name">
+        </div>
+        <div>
+            <label class="new-label">Animal:</label><br>
+            <input class="new-input"  type="text" name="animal">
+        </div>
+        <div>
+            <label class="new-label">Breed:</label><br>
+            <input class="new-input" type="text" name="breed">
+        </div>
+        <div>
+            <label class="new-label">Gender:</label><br>
+            <select class="new-select" name="gender">
+                <option value="null">Select...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label class="new-label">Age:</label><br>
+            <input class="new-input" type="number" name="age">
+        </div>
+        <div>
+            <label class="new-label">Birthday:</label><br>
+            <input class="new-input" type="date" name="birthday">
+        </div>
+        <input id="btn-new" type="submit">
+        <img id="patient-cat" src="/images/giphy-1.webp" alt="patient-cat">
+    </form>
+    
+</body>

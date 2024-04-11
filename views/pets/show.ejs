@@ -1,24 +1,44 @@
 <%- include('../partials/header') %>
-<a href="/pets/<%=pet.id%>/posts/new">Create Post</a>
-<p>Name:<%= pet.name %></p>
-<p>Age: <%= pet.age %></p>
-<p>Birthday: <%= pet.birthday %></p>
-<p><%= pet.animal %> Breed: <%= pet.breed %></p>
-<p>Owner:<%= user.name %></p>
-
-<% pet.posts.forEach(function(post){ %>
-    <%console.log(`post:${post.img}`)%>
-    <a href="<%=post.img%>"><%= post.img %></a>
-    <p>Caption: <%=post.caption%></p>
-    <p>Pet Name: <a href="/pets/<%=pet.id%>"><%=pet.name%></a></p>
-    <p>Posted By: <a href="/<%=pet.owner.id%>"><%=pet.owner.name%></a></p>
-    <a href="/post/<%=post.id%>">View post</a>
-    <%if (user?._id.equals(pet.owner.id)){ %>
-        <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE">
-        </form>
-        <%console.log("id's are equal")%>
-    <% } else { %>
-        <% console.log(`user:${user.id} creator:${pet.owner.id}`)%>
-    <% } %>
-<% }) %>
+<body id="showPet-body">
+    <a id="create-link" href="/pets/<%=pet.id%>/posts/new">Create Post</a>
+    <div id="pet-info">
+        <p><span class="label">Name:</span> <%= pet.name %></p>
+        <p><span class="label">Age:</span> <%= pet.age %></p>
+        <p><span class="label">Birthday:</span> <%= pet.birthday %></p>
+        <p><span class="label"><%= pet.animal %> Breed:</span> <%= pet.breed %></p>
+        <p><span class="label">Owner:</span> <%= user.name %></p>
+    </div>
+    
+    <% pet.posts.forEach(function(post){ %>
+        <%console.log(`post:${post.img}`)%>
+        <a href="<%=post.img%>"><%= post.img %></a>
+        <p>Caption: <%=post.caption%></p>
+        <p>Pet Name: <a href="/pets/<%=pet.id%>"><%=pet.name%></a></p>
+        <p>Posted By: <a href="/<%=pet.owner.id%>"><%=pet.owner.name%></a></p>
+        <a href="/post/<%=post.id%>">View post</a>
+        <%if (user?._id.equals(pet.owner.id)){ %>
+            <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
+                <input type="submit" value="DELETE">
+            </form>
+        <% } %>
+        <p>Comments..</p>
+            <%if(post.comments.length){%>
+                <ul>
+                    <%post.comments.forEach(function(comment){ %>
+                        <li><%=comment.content%></li>
+                            <% if(user?._id.equals(comment.author)){ %>
+                                <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            <% } %>
+                        <% }) %>
+                    </ul>
+                <% } else %>
+                <form action="/posts/<%=post.id%>/comments" method="POST">
+                    <input type="hidden" name="post" value="<%=post.id%>">
+                    <input type="hidden" name="author" value="<%=user.id%>">
+                    <textarea name="content" cols="65" rows="10" placeholder="Add a comment"></textarea>
+                    <input type="submit" value="⬆">
+                </form>
+    <% }) %>
+</body>

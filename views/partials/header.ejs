@@ -1,13 +1,16 @@
 <nav>
-    <a href="/home">HOME</a>
-    <% if (user) { %>
-        <p><%= user.name%></p>
-        <img src="<%=user.avatar%>" alt="avatar">
-        <a href="/pets/new">Add Pets</a>
-        <a href="/logout">LOG OUT</a>
-        <a href="/users/<%=user.id%>">Profile</a>
-    <% } else { %>
-        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="google"></a>
-    <% } %>
+    <div id="header-links">
+            <% if (user) { %>
+                <a class="link" href="/home">HOME</a></td>
+                <div id="user-cont">
+                    <img src="<%=user.avatar%>" alt="avatar"> <span id="user-name"><%= user.name%></span>
+                </div>
+                <a class="link" href="/pets/new">Add Pets</a>
+                <a class="link" href="/users/<%=user.id%>">Profile</a>
+                <a class="link" href="/logout">LOGOUT</a>
+            <% } else { %>
+                <!-- <td><a href="/auth/google" class="login">LOGIN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="google"></a></td> -->
+            <% } %>
+    </div>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </nav>

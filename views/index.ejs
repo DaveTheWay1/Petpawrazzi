@@ -1,6 +1,13 @@
 <%- include('./partials/header') %>
-<body>
-  <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
+<body id="index-body">
+  <img src="/images/giphy.webp" alt="pets">
+  <div id="welcome-container">
+    <div>
+      <h1>Welcome to <%= title %>! <br>Where all beautiful pets are at! ☀︎</h1>
+      <h3>You don't have a pet but want one?</h3>
+      <a href="https://www.hssv.org/about-us/?gad_source=1&gclid=CjwKCAjw8diwBhAbEiwA7i_sJZd6hO8gm6sqsOULGvbQAJqfkhTSWBGjdtxWjFL1N3LFluU6_OH40BoC7k4QAvD_BwE">That's Okay! You can adopt one here TODAY!</a>
+    </div>
+    <a id="login" href="/auth/google" class="login">LOGIN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="google"></a>
+  </div>
 </body>
 

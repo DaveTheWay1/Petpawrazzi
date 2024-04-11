@@ -3,7 +3,8 @@ const Post = require('../models/post');
 const User = require('../models/user');
 
 module.exports = {
-    create
+    create,
+    delete:deleteComment
 }
 
 async function create(req,res){
@@ -13,8 +14,11 @@ async function create(req,res){
     console.log(post.comments);
     await comment.save();
     await post.save();
-    // post.comments.push(comment)
-    // await post.save();
-    // const user = await User.findById(req.params.id).populate({path:'pets', populate:{path:'posts'}});
     res.redirect('/home')
+}
+
+async function deleteComment(req,res){
+    const deletedComment = await Comment.findByIdAndDelete(req.params.id);
+    console.log(deletedComment);
+    res.redirect('/home');
 }

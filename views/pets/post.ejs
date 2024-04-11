@@ -1,13 +1,14 @@
 <%-include('../partials/header') %>
-<%console.log(post)%>
-<a href="<%=post.img%>"><%= post.img %></a>
-<p>Caption: <%=post.caption%></p>
-<p>Name: <%=post.petName.name%></p>
-<p>Posted By: <%=post.author.name%></p>
-<p>Likes: <%= post.likes %> </p>
-<p>Posted At: <%=post.createdAt%></p>
-<% if(user?._id.equals(post.author.id)){ %>
-    <form action="/post/<%=post.id%>/edit">
-        <input type="submit" value="EDIT POST">
-    </form>
-<% } %> 
+<div>
+    <a href="<%=post.img%>"><%= post.img %></a>
+    <p>Caption: <%=post.caption%></p>
+    <p>Name: <%=post.petName.name%></p>
+    <p>Posted By: <%=post.author.name%></p>
+    <p>Likes: <%= post.likes %> </p>
+    <p>Posted At: <%=post.createdAt%></p>
+    <% if(user?._id.equals(post.author.id)){ %>
+        <form action="/post/<%=post.id%>/edit">
+            <input type="submit" value="EDIT POST">
+        </form>
+    <% } %> 
+</div>
