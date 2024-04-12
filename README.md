@@ -14,6 +14,10 @@ Users at the home page will see ALL posts created. Also with their comments, and
 ![HOME-PAGE](public/images/HOMEPAGE-LOOK.jpg)
 ![HOME-PAGE](public/images/COMMENTS-HOME.jpg)
 
+## User Profile Page
+Users at their profile page will be able to see all of their pets' posts combined in one page as well as links to redirect to the pet profile pet.
+![UserProfile-PAGE](public/images/userProfile.jpg)
+
 ### Add Pet Page
 At the add pet page, users will be asked to tell us about their pet, to give us their pet info.
 ![ADDPET-PAGE](public/images/ADDPET.jpg)
