@@ -1,6 +1,6 @@
-<nav>
-    <div id="header-links">
-            <% if (user) { %>
+<% if (user) { %>
+    <nav>
+        <div id="header-links">
                 <a class="link" href="/home">HOME</a></td>
                 <div id="user-cont">
                     <img src="<%=user.avatar%>" alt="avatar"> <span id="user-name"><%= user.name%></span>
@@ -8,9 +8,7 @@
                 <a class="link" href="/pets/new">Add Pets</a>
                 <a class="link" href="/users/<%=user.id%>">Profile</a>
                 <a class="link" href="/logout">LOGOUT</a>
-            <% } else { %>
-                <!-- <td><a href="/auth/google" class="login">LOGIN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="google"></a></td> -->
+        </div>
             <% } %>
-    </div>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</nav>
+    </nav>
+<link rel='stylesheet' href='/stylesheets/style.css' />

@@ -1,44 +1,58 @@
 <%- include('../partials/header') %>
-<body id="showPet-body">
-    <a id="create-link" href="/pets/<%=pet.id%>/posts/new">Create Post</a>
-    <div id="pet-info">
-        <p><span class="label">Name:</span> <%= pet.name %></p>
-        <p><span class="label">Age:</span> <%= pet.age %></p>
-        <p><span class="label">Birthday:</span> <%= pet.birthday %></p>
-        <p><span class="label"><%= pet.animal %> Breed:</span> <%= pet.breed %></p>
-        <p><span class="label">Owner:</span> <%= user.name %></p>
-    </div>
-    
-    <% pet.posts.forEach(function(post){ %>
-        <%console.log(`post:${post.img}`)%>
-        <a href="<%=post.img%>"><%= post.img %></a>
-        <p>Caption: <%=post.caption%></p>
-        <p>Pet Name: <a href="/pets/<%=pet.id%>"><%=pet.name%></a></p>
-        <p>Posted By: <a href="/<%=pet.owner.id%>"><%=pet.owner.name%></a></p>
-        <a href="/post/<%=post.id%>">View post</a>
-        <%if (user?._id.equals(pet.owner.id)){ %>
-            <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
-                <input type="submit" value="DELETE">
-            </form>
-        <% } %>
-        <p>Comments..</p>
-            <%if(post.comments.length){%>
-                <ul>
-                    <%post.comments.forEach(function(comment){ %>
-                        <li><%=comment.content%></li>
-                            <% if(user?._id.equals(comment.author)){ %>
+
+    <body id="showPet-body">
+        <a id="create-link" href="/pets/<%=pet.id%>/posts/new">Create Post</a>
+        <div id="pet-info">
+            <p class="pet-data-show">
+                <%= pet.name %>
+            </p>
+            <p class="pet-data-show"> Age: <%= pet.age %>
+            </p>
+            <p class="pet-data-show">Birthday: <%= new Date(pet.birthday).toLocaleDateString() %>
+            </p>
+            <p class="pet-data-show">
+                <%= pet.animal %> Breed:</span>
+                    <%= pet.breed %>
+            </p>
+            <p class="pet-data-show">Owner: <%= user.name %>
+            </p>
+        </div>
+
+        <% pet.posts.forEach(function(post){ %>
+            <img id="show-petPic" src="<%=post.img%>" alt="pet">
+            <p class="pet-data-show">
+                <%=post.caption%>
+            </p>
+            <p class="pet-data-show">Pet Name: <a href="/pets/<%=pet.id%>">
+                    <%=pet.name%>
+                </a></p>
+            <p class="pet-data-show">Posted By: <a href="/<%=pet.owner.id%>">
+                    <%=pet.owner.name%>
+                </a></p>
+            <%if (user?._id.equals(pet.owner.id)){ %>
+                <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
+                    <a class="aTag-show" href="/post/<%=post.id%>">View post</a> <input id="delete-btn" type="submit"
+                        value="DELETE">
+                </form>
+                <% } else {%>
+                    <a class="aTag-show" href="/post/<%=post.id%>">View post</a>
+                <% } %>
+                <div id="comment-div-show">
+                    <p class="pet-data">Comments..</p>
+                    <%if(post.comments.length){%>
+                        <ul>
+                            <%post.comments.forEach(function(comment){ %>
+                            <li class="pet-data">
+                            <%=comment.author.name%>: <%=comment.content%>
+                            </li>
+                            <% if(user?._id.equals(comment.author.id)){ %>
                                 <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
                                     <input type="submit" value="Delete">
                                 </form>
                             <% } %>
                         <% }) %>
-                    </ul>
-                <% } else %>
-                <form action="/posts/<%=post.id%>/comments" method="POST">
-                    <input type="hidden" name="post" value="<%=post.id%>">
-                    <input type="hidden" name="author" value="<%=user.id%>">
-                    <textarea name="content" cols="65" rows="10" placeholder="Add a comment"></textarea>
-                    <input type="submit" value="⬆">
-                </form>
-    <% }) %>
-</body>
+                        </ul>
+                    <% } %>
+                </div>
+            <% }) %>
+    </body>

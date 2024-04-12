@@ -1,13 +1,19 @@
-<%- include('../partials/header') %>
-<h1>Edit Post For <%=post.petName.name%>!</h1>
-<form action="/post/<%=post.id%>?_method=PUT" method="POST">
-    <div>
-        <label>Photo:</label>
-        <input type="text" name="img" value="<%=post.img%>">
-    </div>
-    <div>
-        <label>Caption:</label>
-        <input type="text" name="caption" value="<%=post.caption%>">
-    </div>
-    <input type="submit">
-</form>
+<body id="edit-body">
+    <%- include('../partials/header') %>
+    <h1 id="edit-header">Edit Post For <%=post.petName.name%>!</h1>
+    <form id="edit-form" action="/post/<%=post.id%>?_method=PUT" method="POST">
+        <div class="edit-div">
+            <label class="pet-data">Photo:</label><br>
+            <input type="text" name="img" value="<%=post.img%>">
+        </div>
+        <div class="edit-div">
+            <label class="pet-data">Caption:</label><br>
+            <input type="text" name="caption" value="<%=post.caption%>">
+        </div>
+        <div id="page-btns">
+            <input type="submit">
+            <a href="/post/<%=post.id%>">Back To Post</a>
+        </div>
+    </form>
+    <img id="edit-pets" src="/images/giphy.webp" alt="pets">
+</body>

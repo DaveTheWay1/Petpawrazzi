@@ -1,14 +1,17 @@
 <%-include('../partials/header') %>
-<div>
-    <a href="<%=post.img%>"><%= post.img %></a>
-    <p>Caption: <%=post.caption%></p>
-    <p>Name: <%=post.petName.name%></p>
-    <p>Posted By: <%=post.author.name%></p>
-    <p>Likes: <%= post.likes %> </p>
-    <p>Posted At: <%=post.createdAt%></p>
-    <% if(user?._id.equals(post.author.id)){ %>
-        <form action="/post/<%=post.id%>/edit">
-            <input type="submit" value="EDIT POST">
-        </form>
-    <% } %> 
-</div>
+<body id="post-body">
+    <div>
+        <img id="post-img" src="<%=post.img%>" alt="pet">
+        <div id="postPet-info">
+            <p class="pet-data-post"><%=post.petName.name%></p>
+            <p class="pet-data-post"><%=post.caption%></p>
+            <p class="pet-data-post">Posted By: <%=post.author.name%></p>
+            <p class="pet-data-post">Posted At: <%= new Date(post.createdAt).toLocaleDateString()%></p>
+            <% if(user?._id.equals(post.author.id)){ %>
+                <form action="/post/<%=post.id%>/edit">
+                    <input id="edit-btn" type="submit" value="EDIT POST">
+                </form>
+            <% } %> 
+        </div>
+    </div>
+</body>

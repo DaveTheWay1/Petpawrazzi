@@ -21,55 +21,10 @@
     </table>
     <% user.pets.forEach(function(pet){ %>
         <% pet.posts.forEach(function(post){ %>
-            <table id="pro-table">
-                <tr>
-                    <td>
-                        <h3 id="petName-pro"><%= pet.name %></h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <td id="petPic-pro" ><img src="<%=post.img%>" alt="pet-pic"></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Caption:<%=post.caption%>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Likes:<%=post.likes%> 
-                        <input type="submit" value="🤍">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p id="comments">Comments..</p>
-                    <%if(post.comments.length){%>
-                        <ul>
-                            <%post.comments.forEach(function(comment){ %>
-                                <li><%=comment.content%></li>
-                                <% if(user?._id.equals(comment.author)){ %>
-                                    <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
-                                        <input type="submit" value="Delete">
-                                    </form>
-                                <% } %>
-                            <% }) %>
-                        </ul>
-                    <% } else { %>
-                        <%console.log('no comments')%>
-                    <% } %>
-                    <%console.log(post)%>
-                    <form action="/posts/<%=post.id%>/comments" method="POST">
-                        <input type="hidden" name="post" value="<%=post.id%>">
-                        <input type="hidden" name="author" value="<%=user.id%>">
-                        <textarea name="content" cols="60" rows="10" placeholder="Add comment"></textarea>
-                        <input id="com-btn-pro" type="submit" value="⬆">
-                    </form>
-                    </td>
-                </tr>
-            </table>
+            <div id="pet-pro-div">
+                <h3 id="petName-pro"><%= pet.name %></h3>
+                <img id="petPic-pro" src="<%=post.img%>" alt="pet-pic">
+            </div>
             <% }) %>
         <% }) %>
 </body>

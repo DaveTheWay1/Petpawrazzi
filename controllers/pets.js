@@ -21,7 +21,7 @@ async function create(req,res){
 }
 
 async function show(req, res){
-    const pet = await Pet.findById(req.params.id).populate(['owner', {path:'posts', populate:{path:'comments'}}]);
+    const pet = await Pet.findById(req.params.id).populate(['owner', {path:'posts', populate:{path:'comments', populate:{path:'author'}}}]);
     const user = await User.findById(pet.owner);
     console.log(pet);
     res.render('pets/show', {pet, user});
