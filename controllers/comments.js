@@ -8,13 +8,17 @@ module.exports = {
 }
 
 async function create(req,res){
-    const comment = await Comment.create(req.body);
-    const post = await Post.findById(req.params.id);
-    post.comments.push(comment);
-    console.log(post.comments);
-    await comment.save();
-    await post.save();
-    res.redirect('/home')
+    try {
+        const comment = await Comment.create(req.body);
+        const post = await Post.findById(req.params.id);
+        post.comments.push(comment);
+        console.log(post.comments);
+        await comment.save();
+        await post.save();
+        res.redirect('/home')
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 async function deleteComment(req,res){

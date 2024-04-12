@@ -9,7 +9,6 @@
                         <% if(user?._id.equals(pet.owner)){ %>
                             <form action="/pets/<%=pet.id%>?_method=DELETE" method="POST">
                                 <a href="/pets/<%=pet.id%>"><%=pet.name%></a> 
-                                <input type="submit" value="Remove Pet">
                             </form>
                         <% } %>
                     </td>
