@@ -12,4 +12,4 @@ Users must first sign in to enter the website. Additionally, a link to adopt if 
 The nav bar is provided for every page on the website.
 Users at the home page will see ALL posts created. Also with their comments, and a space to comment. The owner of the comments will be able to delete their comment if desired.
 ![HOME-PAGE](public/images/HOMEPAGE-LOOK.jpg)
-![HOME-PAGE](public/images/COMMENTS-HOME.jpg.jpg)
+![HOME-PAGE](public/images/COMMENTS-HOME.jpg)
