@@ -35,3 +35,18 @@ Users will be able to view their pets specific post on a page. There, they will 
 ![PetPost-PAGE](public/images/postPage.jpg)
 ![PostEdit-PAGE](public/images/editPage.jpg)
 Upong Editing, users will be redirected back to the post page.
+
+## Getting Started
+### Trello Board
+https://trello.com/b/eupQwlzg/petpawrazzi
+### ERD:
+https://lucid.app/lucidchart/2b0feecb-8324-4ce1-8165-56be537de858/edit?viewport_l[…]1618%2C0_0&invitationId=inv_261061b1-50b1-47d9-abd7-93ed49025412
+### Wireframe:
+https://www.figma.com/file/NqBOCJkNBUQM2LXEzqkji1/Petpawrazzi-ERD?type=whiteboard&node-id=0%3A1&t=lBrMlxYaBAuv2uKK-1
+### Deployment Link
+https://petpawrazzi-dc48e6f218b0.herokuapp.com/
+
+## Next Steps
+1. I would like to make the website more reactive. Apart from bettering the styling, I plan to do this by have each pet name, user name displayed to redirect to the user/pet profile.
+2. I would like to add like buttons for each post
+3. I would also like to add API that helps determine the breeds when a photo is submitted. 
