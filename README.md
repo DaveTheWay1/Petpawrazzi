@@ -36,6 +36,9 @@ Users will be able to view their pets specific post on a page. There, they will 
 ![PostEdit-PAGE](public/images/editPage.jpg)
 Upong Editing, users will be redirected back to the post page.
 
+## Technologies Used
+### HTML CSS JAVASCRIPT MONGODB MONGOOSE EXPRESS
+
 ## Getting Started
 ### Trello Board
 https://trello.com/b/eupQwlzg/petpawrazzi
