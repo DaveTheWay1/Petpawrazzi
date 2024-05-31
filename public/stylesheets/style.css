@@ -78,3 +78,13 @@ img[alt="pets"]{
   padding: 5px;
   border-radius: 10px;
 }
+
+.card{
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.card-img-top{
+  padding: 25px;
+}

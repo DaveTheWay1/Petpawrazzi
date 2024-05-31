@@ -1,39 +1,48 @@
 <%- include('./partials/header') %>
 <body>
-    <h1>Welcome To Petpawrazzi</h1>
+    <!-- <h1>Welcome To Petpawrazzi</h1> -->
     
     <% if(allPosts.length){ %>
         <% allPosts.forEach(function(post){ %>
         <div>
-            <h3><%=post.petName.name%></h3>
-            <img class="img-fluid" src="<%=post.img%>" alt="petPic">
-            <div>
-                <p><%=post.caption%></p>
-                <p>Posted By:</span> <%=post.author.name%> <span class="label">Date:</span> <%= new Date(post.createdAt).toLocaleDateString() %></p>
-                <p>Comments..</p>
-            </div>
-            <%if(post.comments.length){%>
-                <ul>
-                    <%post.comments.forEach(function(comment){ %>
-                        <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
-                            <% if(user?._id.equals(comment.author.id)){ %>
-                                <li> <%=comment.author.name%>: <%=comment.content%> <input type="submit" value="Delete"></li>
-                            <% } else {%>
-                                <li> <%=comment.author.name%>: <%=comment.content%></li>
-                            <% } %>
+            <div class="card" style="width: 40rem;">
+                <img class="card-img-top" src="<%=post.img%>" alt="Card image cap">
+                <div class="card-body">
+                        <h5 class="card-title"><%=post.petName.name%></h5>
+                        <hr>
+                        <p class="card-text">
+                            Caption: <%=post.caption%><br>
+                            <span class="label">Date:</span> <%= new Date(post.createdAt).toLocaleDateString() %> Posted By:</span> <%=post.author.name%><br>
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <%if(post.comments.length){%>
+                            <ul>
+                                <%post.comments.forEach(function(comment){ %>
+                                    <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
+                                        <% if(user?._id.equals(comment.author.id)){ %>
+                                            <li> <%=comment.author.name%>: <%=comment.content%> <input type="submit" value="Delete"></li>
+                                        <% } else {%>
+                                            <li> <%=comment.author.name%>: <%=comment.content%></li>
+                                        <% } %>
+                                    </form>
+                                <% }) %>
+                            </ul>
+                        <%} else { %>
+                            <p>No Comments Yet..</p>
+                        <% }%>
+                    </div>
+                    <div class="card-body">
+                        <label for="comment">Comments:</label>
+                        <form action="posts/<%=post.id%>/comments" method="POST">
+                            <input type="hidden" name="post" value="<%=post.id%>">
+                            <input type="hidden" name="author" value="<%=user.id%>">
+                            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                            <input type="submit" class="btn btn-outline-success" value="Add Comment">
                         </form>
-                    <% }) %>
-                </ul>
-            <%}%>
-                <form action="posts/<%=post.id%>/comments" method="POST">
-                    <input type="hidden" name="post" value="<%=post.id%>">
-                    <input type="hidden" name="author" value="<%=user.id%>">
-                    <textarea name="content" cols="65" rows="10" placeholder="Add a comment"></textarea>
-                    <input type="submit" value="⬆">
-                </form>
-            <% }) %>
-        <% } else {%>
-            <p>No posts yet</p>
-        <%}%>
-    </div>
+                    </div>
+                </div>
+                <% }) %>
+            <% } %>
+        </div>
 </body>
