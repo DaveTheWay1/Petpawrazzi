@@ -1,48 +1,48 @@
 <%- include('../partials/header') %>
 
-    <body id="showPet-body">
-        <a id="create-link" href="/pets/<%=pet.id%>/posts/new">Create Post</a>
-        <div id="pet-info">
-            <p class="pet-data-show">
+    <body>
+        <a href="/pets/<%=pet.id%>/posts/new">Create Post</a>
+        <div>
+            <p>
                 <%= pet.name %>
             </p>
-            <p class="pet-data-show"> Age: <%= pet.age %>
+            <p> Age: <%= pet.age %>
             </p>
-            <p class="pet-data-show">Birthday: <%= new Date(pet.birthday).toLocaleDateString() %>
+            <p>Birthday: <%= new Date(pet.birthday).toLocaleDateString() %>
             </p>
-            <p class="pet-data-show">
+            <p>
                 <%= pet.animal %> Breed:</span>
                     <%= pet.breed %>
             </p>
-            <p class="pet-data-show">Owner: <%= user.name %>
+            <p>Owner: <%= user.name %>
             </p>
         </div>
 
         <% pet.posts.forEach(function(post){ %>
-            <img id="show-petPic" src="<%=post.img%>" alt="pet">
-            <p class="pet-data-show">
+            <img src="<%=post.img%>" alt="pet">
+            <p>
                 <%=post.caption%>
             </p>
-            <p class="pet-data-show">Pet Name: <a href="/pets/<%=pet.id%>">
+            <p>Pet Name: <a href="/pets/<%=pet.id%>">
                     <%=pet.name%>
                 </a></p>
-            <p class="pet-data-show">Posted By: <a href="/<%=pet.owner.id%>">
+            <p>Posted By: <a href="/<%=pet.owner.id%>">
                     <%=pet.owner.name%>
                 </a></p>
             <%if (user?._id.equals(pet.owner.id)){ %>
                 <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
-                    <a class="aTag-show" href="/post/<%=post.id%>">View post</a> <input id="delete-btn" type="submit"
+                    <a href="/post/<%=post.id%>">View post</a> <input id="delete-btn" type="submit"
                         value="DELETE">
                 </form>
                 <% } else {%>
-                    <a class="aTag-show" href="/post/<%=post.id%>">View post</a>
+                    <a href="/post/<%=post.id%>">View post</a>
                 <% } %>
-                <div id="comment-div-show">
-                    <p class="pet-data">Comments..</p>
+                <div>
+                    <p>Comments..</p>
                     <%if(post.comments.length){%>
                         <ul>
                             <%post.comments.forEach(function(comment){ %>
-                            <li class="pet-data">
+                            <li>
                             <%=comment.author.name%>: <%=comment.content%>
                             </li>
                             <% if(user?._id.equals(comment.author.id)){ %>

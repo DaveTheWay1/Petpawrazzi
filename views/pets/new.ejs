@@ -1,38 +1,38 @@
 <%- include('../partials/header') %>
-<body id="new-body">
-    <h1 id="header-new">Tell Us About Your Pet!</h1>
-    <form id="add-pet" action="/pets/<%=user.id%>" method="POST">
+<body>
+    <h1>Tell Us About Your Pet!</h1>
+    <form action="/pets/<%=user.id%>" method="POST">
         <input type="hidden" name="owner" value="<%=user.id%>">
         <div>
-            <label class="new-label" >Name:</label><br>
-            <input class="new-input" type="text" name="name">
+            <label>Name:</label><br>
+            <input type="text" name="name">
         </div>
         <div>
-            <label class="new-label">Animal:</label><br>
-            <input class="new-input"  type="text" name="animal">
+            <label>Animal:</label><br>
+            <input type="text" name="animal">
         </div>
         <div>
-            <label class="new-label">Breed:</label><br>
-            <input class="new-input" type="text" name="breed">
+            <label>Breed:</label><br>
+            <input type="text" name="breed">
         </div>
         <div>
-            <label class="new-label">Gender:</label><br>
-            <select class="new-select" name="gender">
+            <label>Gender:</label><br>
+            <select name="gender">
                 <option value="null">Select...</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
         </div>
         <div>
-            <label class="new-label">Age:</label><br>
-            <input class="new-input" type="number" name="age">
+            <label>Age:</label><br>
+            <input type="number" name="age">
         </div>
         <div>
-            <label class="new-label">Birthday:</label><br>
-            <input class="new-input" type="date" name="birthday">
+            <label>Birthday:</label><br>
+            <input type="date" name="birthday">
         </div>
-        <input id="btn-new" type="submit">
-        <img id="patient-cat" src="/images/giphy-1.webp" alt="patient-cat">
+        <input type="submit">
+        <img src="/images/giphy-1.webp" alt="patient-cat">
     </form>
     
 </body>

@@ -1,15 +1,15 @@
 <%-include('../partials/header') %>
-<body id="post-body">
+<body>
     <div>
-        <img id="post-img" src="<%=post.img%>" alt="pet">
-        <div id="postPet-info">
-            <p class="pet-data-post"><%=post.petName.name%></p>
-            <p class="pet-data-post"><%=post.caption%></p>
-            <p class="pet-data-post">Posted By: <%=post.author.name%></p>
-            <p class="pet-data-post">Posted At: <%= new Date(post.createdAt).toLocaleDateString()%></p>
+        <img src="<%=post.img%>" alt="pet">
+        <div>
+            <p><%=post.petName.name%></p>
+            <p><%=post.caption%></p>
+            <p>Posted By: <%=post.author.name%></p>
+            <p>Posted At: <%= new Date(post.createdAt).toLocaleDateString()%></p>
             <% if(user?._id.equals(post.author.id)){ %>
                 <form action="/post/<%=post.id%>/edit">
-                    <input id="edit-btn" type="submit" value="EDIT POST">
+                    <input type="submit" value="EDIT POST">
                 </form>
             <% } %> 
         </div>

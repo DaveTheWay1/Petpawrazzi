@@ -1,18 +1,18 @@
 <%- include('../partials/header') %>
-<body id="create-body">
-    <h1 id="create-header">Create A Post For <%=pet.name%>!</h1>
-    <form id="create-form" action="/posts/create" method="POST">
+<body>
+    <h1>Create A Post For <%=pet.name%>!</h1>
+    <form action="/posts/create" method="POST">
         <input type="hidden" name="petName" value="<%=pet.id%>">
         <input type="hidden" name="author" value="<%=pet.owner.id%>">
-        <div class="create-div">
+        <div>
             <label>Photo:</label><br>
             <input type="text" name="img">
         </div>
-        <div class="create-div">
+        <div>
             <label>Caption:</label><br>
             <input type="text" name="caption">
         </div>
-        <input id="create-btn" type="submit">
+        <input type="submit">
     </form>
-    <img id="create-img" src="/images/giphy.webp" alt="pets">
+    <img src="/images/giphy.webp" alt="pets">
 </body>

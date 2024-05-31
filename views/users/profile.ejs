@@ -1,29 +1,43 @@
 <%- include('../partials/header') %>
-<h1 id="pro-header"><%= user.name %>, Welcome to your profile!</h1>
-<body id="pro-body">
-    <table id="pets">
-        <tr>
-            <% if (user.pets.length) { %>
-                <% user.pets.forEach(function(pet){ %>
-                    <td>
-                        <% if(user?._id.equals(pet.owner)){ %>
-                            <form action="/pets/<%=pet.id%>?_method=DELETE" method="POST">
-                                <a href="/pets/<%=pet.id%>"><%=pet.name%></a> 
-                            </form>
-                        <% } %>
-                    </td>
-            <% }) %> 
-        <% } else {%>
-            <td>No pets yet</td>
-        <%} %>
-        </tr>
-    </table>
-    <% user.pets.forEach(function(pet){ %>
-        <% pet.posts.forEach(function(post){ %>
-            <div id="pet-pro-div">
-                <h3 id="petName-pro"><%= pet.name %></h3>
-                <img id="petPic-pro" src="<%=post.img%>" alt="pet-pic">
+
+    <body>
+        <h1>
+
+        </h1>
+        <% if (user.pets.length) { %>
+
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    Your Pets 🐶
+                </button>
+                <ul class="dropdown-menu">
+                    <% user.pets.forEach(function(pet){ %>
+                        <li><a class="dropdown-item" href="/pets/<%=pet.id%>">
+                                <%=pet.name%>
+                            </a></li>
+                        <% }) %>
+                </ul>
             </div>
+            <% } %>
+            <% user.pets.forEach(function(pet){ %>
+                <% pet.posts.forEach(function(post){ %>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="<%=post.img%>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+                <% }) %>
             <% }) %>
-        <% }) %>
-</body>
+    </body>
