@@ -1,38 +1,37 @@
 <%- include('../partials/header') %>
 <body>
-    <h1>Tell Us About Your Pet!</h1>
+    <h1 class="new-pet-title">Tell Us About Your Pet! </h1>
+    <h2 class="new-pet-title"> <img src="/images/giphy-1.webp" alt="patient-cat"> </h2>
     <form action="/pets/<%=user.id%>" method="POST">
         <input type="hidden" name="owner" value="<%=user.id%>">
-        <div>
+        <div class="mb-3 mt-3">
             <label>Name:</label><br>
-            <input type="text" name="name">
+            <input class="form-control" type="text" name="name">
         </div>
-        <div>
+        <div class="mb-3 mt-3">
             <label>Animal:</label><br>
-            <input type="text" name="animal">
+            <input class="form-control" type="text" name="animal">
         </div>
-        <div>
+        <div class="mb-3 mt-3">
             <label>Breed:</label><br>
-            <input type="text" name="breed">
+            <input class="form-control" type="text" name="breed">
         </div>
-        <div>
+        <div class="mb-3 mt-3">
             <label>Gender:</label><br>
-            <select name="gender">
+            <select class="form-select" name="gender">
                 <option value="null">Select...</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
         </div>
-        <div>
+        <div class="mb-3 mt-3">
             <label>Age:</label><br>
-            <input type="number" name="age">
+            <input class="form-control" type="number" name="age">
         </div>
-        <div>
+        <div class="mb-3 mt-3">
             <label>Birthday:</label><br>
-            <input type="date" name="birthday">
+            <input class="form-control" type="date" name="birthday">
         </div>
-        <input type="submit">
-        <img src="/images/giphy-1.webp" alt="patient-cat">
+        <input type="submit" class="btn btn-primary">
     </form>
-    
 </body>

@@ -88,3 +88,15 @@ img[alt="pets"]{
 .card-img-top{
   padding: 25px;
 }
+
+img[alt="patient-cat"]{
+  height: 150px;
+}
+
+.new-pet-title{
+  text-align: center;
+}
+
+.dropdown{
+  text-align: center;
+}
