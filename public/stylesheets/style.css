@@ -100,3 +100,15 @@ img[alt="patient-cat"]{
 .dropdown{
   text-align: center;
 }
+
+#pet-pro-info{
+  text-align: center;
+  width: 500px;
+  padding: 25px;
+}
+
+#create-post-show-btn{
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+}

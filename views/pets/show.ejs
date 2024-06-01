@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
 
     <body>
-        <a href="/pets/<%=pet.id%>/posts/new">Create Post</a>
-        <div>
+        <a href="/pets/<%=pet.id%>/posts/new" id="create-post-show-btn" class="btn btn-info">Create Post</a>
+        <div id="pet-pro-info" class="container">
             <p>
                 <%= pet.name %>
             </p>
@@ -11,7 +11,7 @@
             <p>Birthday: <%= new Date(pet.birthday).toLocaleDateString() %>
             </p>
             <p>
-                <%= pet.animal %> Breed:</span>
+                <%= pet.animal %> Breed: </span>
                     <%= pet.breed %>
             </p>
             <p>Owner: <%= user.name %>
@@ -19,40 +19,41 @@
         </div>
 
         <% pet.posts.forEach(function(post){ %>
-            <img src="<%=post.img%>" alt="pet">
-            <p>
-                <%=post.caption%>
-            </p>
-            <p>Pet Name: <a href="/pets/<%=pet.id%>">
-                    <%=pet.name%>
-                </a></p>
-            <p>Posted By: <a href="/<%=pet.owner.id%>">
-                    <%=pet.owner.name%>
-                </a></p>
-            <%if (user?._id.equals(pet.owner.id)){ %>
-                <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
-                    <a href="/post/<%=post.id%>">View post</a> <input id="delete-btn" type="submit"
-                        value="DELETE">
-                </form>
-                <% } else {%>
-                    <a href="/post/<%=post.id%>">View post</a>
-                <% } %>
-                <div>
-                    <p>Comments..</p>
-                    <%if(post.comments.length){%>
-                        <ul>
-                            <%post.comments.forEach(function(comment){ %>
-                            <li>
-                            <%=comment.author.name%>: <%=comment.content%>
-                            </li>
-                            <% if(user?._id.equals(comment.author.id)){ %>
-                                <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
-                                    <input type="submit" value="Delete">
-                                </form>
-                            <% } %>
-                        <% }) %>
-                        </ul>
-                    <% } %>
+            <div class="card" style="width: 40rem;">
+                <img class="card-img-top" src="<%=post.img%>" alt="pet">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/pets/<%=pet.id%>">
+                            <%=pet.name%>
+                        </a></h5>
+                    <p>Caption: <%=post.caption%>
+                    </p>
+                    <p>Posted By: <a href="/<%=pet.owner.id%>">
+                            <%=pet.owner.name%>
+                        </a></p>                
+                    <%if (user?._id.equals(pet.owner.id)){ %>
+                        <form action="/post/<%=post.id%>?_method=DELETE" method="POST">
+                            <a href="/post/<%=post.id%>">View post</a> <input id="delete-btn" type="submit" value="DELETE">
+                        </form>
+                        <div>
+                            <%if(post.comments.length){%>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Comments..</button>
+                                <ul id="demo">
+                                    <%post.comments.forEach(function(comment){ %>
+                                        <li>
+                                            <%=comment.author.name%>: <%=comment.content%>
+                                        </li>
+                                        <% if(user?._id.equals(comment.author.id)){ %>
+                                            <form action="/comment/<%=comment.id%>?_method=DELETE" method="POST">
+                                                <input type="submit" value="Delete">
+                                            </form>
+                                            <% } %>
+                                                <% }) %>
+                                </ul>
+                                <% } else {%>
+                                    <p>No Comments Yet</p>
+                                    <% } %>
+                        </div>
+                        <% }}) %>
                 </div>
-            <% }) %>
+            </div>
     </body>
